@@ -19,3 +19,13 @@ class BloodRequest(models.Model):
     request_date = models.DateField(auto_now_add=True)
     status = models.CharField(max_length=50, default="Pending")
 
+
+class HospitalDonorRequest(models.Model):
+    hospital_name = models.CharField(max_length=200)
+    blood_type = models.CharField(max_length=3)
+    request_date = models.DateField(auto_now_add=True)
+    status = models.CharField(max_length=50, default="Pending")
+
+    def __str__(self):
+        return f"{self.hospital_name} - {self.blood_type}"
+
