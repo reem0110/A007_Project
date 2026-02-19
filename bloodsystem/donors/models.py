@@ -1,4 +1,16 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.db import models
+
+class HospitalProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    hospital_name = models.CharField(max_length=200)
+    address = models.CharField(max_length=300)
+    contact_number = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.hospital_name
+
 
 class Donor(models.Model):
     name = models.CharField(max_length=100)
@@ -21,11 +33,9 @@ class BloodRequest(models.Model):
 
 
 class HospitalDonorRequest(models.Model):
-    hospital_name = models.CharField(max_length=200)
+    hospital = models.ForeignKey(HospitalProfile, on_delete=models.CASCADE)
     blood_type = models.CharField(max_length=3)
     request_date = models.DateField(auto_now_add=True)
     status = models.CharField(max_length=50, default="Pending")
 
-    def __str__(self):
-        return f"{self.hospital_name} - {self.blood_type}"
 
