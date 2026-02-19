@@ -77,12 +77,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'blood_db',
-        'USER': 'root',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
+        'USER': 'blood_user',
+        'PASSWORD': 'admin123',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
+
 
 
 
